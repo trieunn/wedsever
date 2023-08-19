@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Phần Header của Website -->
+    <!-- ////////////// CHƯƠNG TRÌNH HỆ THỐNG //////////////  -->
+    <title>Scada hệ thống giám sát trên internet</title>
+    <link rel="stylesheet" href="CSS/screen_main.css" />
+    <link rel="stylesheet" href="CSS/screen_1.css" />
+    <link rel="stylesheet" href="CSS/screen_2.css" />
+    <script src="socket.io/socket.io.js"></script>
+    <script src="js/FC1_Common.js"></script>
+    <script>
+      var socket = io("localhost:3000"); // IP tĩnh (hoặc IP động, hoặc localhost)
+    </script>
+  </head>
+  <body>
+    <!-- Nút nhấn chạy động cơ -->
+    <!-- <button id="btt_RUN_M1" onclick="socket.emit('Client-send-cmdM1', true);"> -->
+    <!-- RUN MOTOR 1 -->
+    <!-- </button> -->
+    <!-- Nút nhấn dừng động cơ -->
+    <!-- <button id="btt_STOP_M1" onclick="socket.emit('Client-send-cmdM1', false);"> -->
+    <!-- STOP MOTOR 1 -->
+    <!-- </button> -->
+
+    <!--Tag dạng Bool-->
+    <label>Tag dạng bool:</label>
+    <input id="tbx_Bool" disabled="disabled" type="text" />
+    <script>
+      fn_IOFieldDataShow("tag_Bool", "tbx_Bool", 0);
+    </script>
+    <br /><br />
+    <!--Tag dạng Số nguyên-->
+    <label>Tag dạng số nguyên:</label>
+    <input id="tbx_Integer" disabled="disabled" type="text" />
+    <script>
+      fn_IOFieldDataShow("tag_Integer", "tbx_Integer", 0);
+    </script>
+    <br /><br />
+    <!--Tag dạng Số thực-->
+    <label>Tag dạng số thực:</label>
+    <input id="tbx_Real" disabled="disabled" type="text" />
+    <script>
+      fn_IOFieldDataShow("tag_Real", "tbx_Real", 2);
+    </script>
+
+    <!-- Tạo bơm có tên là Pump 1 -->
+    <img id="Pump_1" />
+    <script>
+      fn_SymbolStatus("Pump_1", "bom1", "tag_Integer");
+    </script>
+
+    <!-- 
+    <script>
+      fn_btt_Color("tag_Bool", "btt_RUNMOTOR1", "red", "gray");
+    </script> -->
+  </body>
+</html>
